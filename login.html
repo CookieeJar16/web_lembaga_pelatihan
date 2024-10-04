@@ -13,12 +13,28 @@
 <body>
   <div class="container" id="main">
     <div class="login">
-      <form action="index.html">
+      <form id="signInForm" action="index.html">
         <h1>Sign In</h1>
-        <label for="email">Email</label>
-        <input type="email">
-        <label for="password">Password</label>
-        <input type="password">
+        <div class="field email">
+          <div class="input-area">
+            <label for="email">Email</label>
+            <input type="email" id="email">
+            <i class="icon fa-regular fa-envelope"></i>
+            <i class="error-icon fa-solid fa-exclamation-circle" id="iconErrorEmail"></i>
+          </div>
+          <div class="error-txt" id="emailError">Email can't be blank!</div>
+        </div>
+        <div class="field password">
+          <div class="input-area">  
+            <label for="password">Password</label>
+            <input type="password" id="password">
+            <i class="icon fa-solid fa-lock"></i>
+            <i class="hide-pass fa-solid fa-eye" id="hidePw"></i>
+            <i class="show-pass fa-solid fa-eye-slash" id="showPw"></i>
+            <i class="error-icon fa-solid fa-exclamation-circle" id="iconErrorPassword"></i>
+          </div>
+          <div class="error-txt" id="passwordError">Password can't be blank!</div>
+        </div>
         <a class="text-forgot" href="#">Forgot Password?</a>
         <button type="submit">Sign In</button>
           <span class="line">or</span>
@@ -33,10 +49,11 @@
     <div class="side-content">
       <div class="content">
         <img src="./img/learning-concept-illustration.png">
-        <h1>Welcome To Luarsekolah</h1>
+        <h1>Welcome To Ngoding</h1>
         <p>Yuk menjadi bagian dalam menciptakan ruang interaktif untuk bersosialisasi dan kolaborasi dengan menjadi bagian dari komunitas Luarsekolah</p>
       </div>
     </div>
   </div>
+  <script src="login.js"></script>
 </body>
 </html>

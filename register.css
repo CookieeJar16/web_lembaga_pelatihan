@@ -123,6 +123,22 @@ img{
   letter-spacing: 0.4px;
 }
 
+@keyframes shake {
+  0%, 100% {
+    margin-left: 0;
+  }
+  20%, 80% {
+    margin-left: -10px;
+  }
+  40%, 60% {
+    margin-left: 10px;
+  }
+}
+
+.shake{
+  animation: shake 0.3s ease-in-out;
+}
+
 @media (max-width: 768px){
   .container {
     flex-direction: column;

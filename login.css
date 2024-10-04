@@ -76,6 +76,8 @@ body{
   border-radius: 8px;
   width: 100%;
   outline: none;
+  padding-right: 35px;
+  padding-left: 35px;
 }
 
 .login{
@@ -89,6 +91,7 @@ body{
   text-align: end;
   margin: 10px 0;
   font-size: 14px;
+  text-decoration: none;
 }
 
 .social{
@@ -170,6 +173,63 @@ img{
   margin-top: 10px;
   color: gray;
   letter-spacing: 0.4px;
+}
+
+form p a{
+  text-decoration: none;
+}
+
+.input-area{
+  position: relative;
+  align-items: center;
+}
+
+.input-area i{
+  position: absolute;
+  top: 55%;
+}
+
+.input-area .icon{
+  left: 10px;
+}
+
+.input-area .error-icon{
+  margin-left: 8px;
+  color: red;
+  display: none;
+}
+
+.input-area .show-pass{
+  right: 10px;
+  cursor: pointer;
+}
+
+.input-area .hide-pass{
+  right: 10px;
+  display: none;
+  cursor: pointer;
+}
+
+.error-txt{
+  color: red;
+  font-size: 13px;
+  display: none;
+}
+
+@keyframes shake {
+  0%, 100% {
+    margin-left: 0;
+  }
+  20%, 80% {
+    margin-left: -10px;
+  }
+  40%, 60% {
+    margin-left: 10px;
+  }
+}
+
+.shake{
+  animation: shake 0.3s ease-in-out;
 }
 
 @media (max-width: 768px){

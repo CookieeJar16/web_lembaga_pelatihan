@@ -15,25 +15,34 @@
     <div class="side-content">
       <div class="content">
         <img src="./img/programmer-concept-illustration.png">
-        <h1>Join to Luarsekolah</h1>
-        <p>Dapatkan akses ke beberapa kelas menarik yang diadakan oleh Luarsekolah</p>
+        <h1>Join to Ngoding</h1>
+        <p>Dapatkan akses ke beberapa kelas menarik yang diadakan oleh Ngoding</p>
       </div>
     </div> 
     <div class="register">
-      <form action="login.html">
+      <form id="registerForm" action="login.html">
         <h1>Sign Up</h1>
-        <label for="text">Username</label>
-        <input type="text">
-        <label for="email">Email</label>
-        <input type="email">
-        <label for="password">Password</label>
-        <input type="password">
-        <label for="password">Confirm Password</label>
-        <input type="password">
+        <div class="input-area">
+          <label for="username">Username</label>
+          <input type="text" id="username">
+        </div>
+        <div class="input-area">
+          <label for="email">Email</label>
+          <input type="email" id="registerEmail">
+        </div>
+        <div class="input-area">
+          <label for="password">Password</label>
+          <input type="password" id="registerPassword">
+        </div>
+        <div class="input-area">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword">
+        </div>
         <button type="submit">Sign Up</button>
         <span><a href="login.html">Already have an account?</a></span>
       </form>
     </div> 
   </div>
+  <script src="register.js"></script>
 </body>
 </html>
