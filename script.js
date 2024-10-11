@@ -129,3 +129,33 @@ daftarBackend.addEventListener('click', () => {
 daftarFrontend.addEventListener('click', () => {
   window.location.href = './Program/program_data_science.html';
 });
+
+const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+const loginBtn = document.getElementById('btn-login');
+const userIcon = document.getElementById('user');
+const userMenu = document.getElementById('userMenu');
+
+if (isLoggedIn) {
+    loginBtn.style.display = 'none';
+    userIcon.style.display = 'flex';
+}
+
+userIcon.addEventListener('click', function() {
+    if (userMenu.style.display === 'none' || userMenu.style.display === '') {
+        userMenu.style.display = 'block';
+    } else {
+        userMenu.style.display = 'none';
+    }
+});
+
+document.getElementById('profile').addEventListener('click', function() {
+    window.location.href = './Profile/profile.html';
+})
+
+document.getElementById('logout').addEventListener('click', function() {
+    sessionStorage.removeItem('account');
+    sessionStorage.removeItem('isLoggedIn');
+    userMenu.style.display = 'none';
+    userIcon.style.display = 'none';
+    loginBtn.style.display = 'block';
+});

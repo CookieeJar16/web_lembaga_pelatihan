@@ -1,8 +1,7 @@
-//registration validation
 const registerForm = document.getElementById("registerForm");
-const usernameInput = document.getElementById("username").value;
-const registerEmailInput = document.getElementById("registerEmail").value;
-const registerPasswordInput = document.getElementById("registerPassword").value;
+const usernameInput = document.getElementById("username");
+const registerEmailInput = document.getElementById("registerEmail");
+const registerPasswordInput = document.getElementById("registerPassword");
 const confirmPasswordInput = document.getElementById("confirmPassword");
 
 function isValidEmail(email) {
@@ -18,6 +17,7 @@ function shakeElement(element){
 }
 
 registerForm.addEventListener("submit", function(event) {
+  event.preventDefault();
   let isValid = true;
 
   if (usernameInput.value.trim() === "") {
@@ -39,7 +39,17 @@ if (confirmPasswordInput.value.trim() !== registerPasswordInput.value.trim()) {
   shakeElement(confirmPasswordInput);
   isValid = false;
 }
-if (!isValid) {
-  event.preventDefault();
+if (isValid) {
+  const userData = {
+    username: usernameInput.value.trim(),
+    email: registerEmailInput.value.trim(),
+    password: registerPasswordInput.value.trim(),
+};
+sessionStorage.setItem('account', JSON.stringify(userData));
+sessionStorage.setItem('isLoggedIn', true);
+
+alert('Register berhasil!');
+
+window.location.href = '../Login/login.html';
 }
 });

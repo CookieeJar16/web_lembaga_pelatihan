@@ -1,4 +1,3 @@
-//password toggle
 const password = document.getElementById('password');
 const pwtoggle = document.getElementById('showPw');
 const pwhide = document.getElementById('hidePw');
@@ -26,7 +25,6 @@ function hidePassword() {
   }
 }
 
-//login validation
 const form = document.getElementById("signInForm");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
@@ -34,6 +32,7 @@ const emailError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
 const iconErrorEmail = document.getElementById("iconErrorEmail");
 const iconErrorPassword = document.getElementById("iconErrorPassword");
+const storedAccount = JSON.parse(sessionStorage.getItem('account'));
 
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -48,6 +47,7 @@ function shakeElement(element){
 }
 
 form.addEventListener("submit", function(event) {
+  event.preventDefault();
   let isValid = true;
 
   emailError.style.display = "none";
@@ -70,6 +70,28 @@ form.addEventListener("submit", function(event) {
       isValid = false;
   }
 
+  if (isValid) {
+    // Cek apakah akun terdaftar
+    if (storedAccount && 
+        emailInput.value.trim() === storedAccount.email && 
+        passwordInput.value.trim() === storedAccount.password) {
+        
+        alert('Login berhasil!');
+        sessionStorage.setItem('isLoggedIn', true);
+        window.location.href = "../index.html";
+    } else {
+        alert('Email atau password salah!');
+        emailError.style.display = "block";
+        emailInput.classList.add("error");
+        iconErrorEmail.style.display = "inline";
+        shakeElement(emailInput);
+        passwordError.style.display = "block";
+        passwordInput.classList.add("error");
+        iconErrorPassword.style.display = "inline";
+        shakeElement(passwordInput);
+        isValid = false;
+    }
+}
     if (!isValid) {
         event.preventDefault();
     }
