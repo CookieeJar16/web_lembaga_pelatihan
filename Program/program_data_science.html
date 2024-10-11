@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="data_science.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Program Data Science</title>
+</head>
+<body>
+  <header>
+    <img src="../img/logo.png">
+    <nav>
+      <ul class="sidebar">
+        <li onclick="hideSidebar()"><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#383c3f"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+        <li><a href="../index.html"><b>Home</b></a></li>
+        <li><a href="../index.html#program-title"><b>Program</b></a></li>
+        <li><a href="#"><b>About Us</b></a></li>
+        <li><a href="./Contact/contact.html"><b>Contact</b></a></li>
+        <li><a href="./Login/login.html"><b>Sign In</b></a></li>
+      </ul>
+      <ul class="navbar">
+        <li><a href="../index.html"><b>Home</b></a></li>
+        <li><a href="../index.html#program-title"><b>Program</b></a></li>
+        <li><a href="#"><b>About Us</b></a></li>
+        <li><a href="./Contact/contact.html"><b>Contact</b></a></li>
+      </ul>
+    </nav>
+    <button class="btn" onclick="btnlogin()">Sign In</button>
+    <a class="btn2" onclick="showSidebar()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#383c3f"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
+  </header>
+  <div class="container-body">
+    <div class="side">
+      <p>Data Science</p>
+      <button id="tg-program">Tentang Program</button>
+      <button id="silabus">Silabus</button>
+      <button id="mentor">Mentor</button>
+      <button id="jadwal">Jadwal & Biaya</button>
+      <button class="btn-daftar" id="daftar-kelas">Daftar Kelas</button>
+    </div>
+    <div class="container">
+      <div class="container-1" id="container-1">
+        <h1>Program Data Science: Menguasai Ilmu dari Data  untuk Membuat Keputusan yang Lebih Baik</h1>
+        <P>Melalui kurikulum komprehensif ini, kamu akan  mempelajari cara mengolah data dari nol, melakukan   analisis statistik, hingga membangun model prediksi   menggunakan machine learning. Di akhir program, kamu  akan memiliki keahlian untuk memecahkan masalah  bisnis nyata menggunakan data dan mampu  memvisualisasikan hasilnya dengan cara yang mudah  dipahami.</P>
+        <p>Melalui kurikulum komprehensif ini, kamu akan mempelajari cara mengolah data dari nol, melakukan analisis statistik, hingga membangun model prediksi menggunakan machine learning. Di akhir program, kamu akan memiliki keahlian untuk memecahkan masalah bisnis nyata menggunakan data dan mampu memvisualisasikan hasilnya dengan cara yang mudah dipahami.</p>
+      </div>
+      <div class="container-2">
+        <p>Yang Akan Kamu Pelajari:</p>
+        <ul class="container-2-list">
+          <li><b>Data Preparation & Cleaning:</b>Teknik untuk menyiapkan dan membersihkan data agar siap dianalisis.</li>
+          <li><b>Exploratory Data Analysis:</b>Cara mengeksplorasi data untuk menemukan pola dan tren penting.</li>
+          <li><b>Machine Learning:</b>Penerapan algoritma supervised dan unsupervised learning untuk membuat model prediktif.</li>
+          <li><b>Data Visualization:</b>Membuat visualisasi data yang efektif untuk menyampaikan hasil analisis secara jelas dan menarik.</li>
+        </ul>
+      </div>
+      <div class="container-3">
+        <div class="silabus" id="silabus-1">
+          <h1>Silabus</h1>
+          <p><b>Durasi: </b>14 Minggu</p>
+          <p><b>Mode Belajar: </b>Kelas Online, Video On-Demand, Diskusi Mentor</p>
+          <p><b>Proyek: </b>2 Proyek Mini + 1 Proyek Akhir</p>
+          <div class="accordion">  
+            <div class="accordion-item">
+              <button class="accordion-button">Minggu 1-2: Pengenalan Data Science & Alat-alat Analisis</button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Pengantar Data Science: Apa itu Data Science dan aplikasi dalam berbagai industri</li>
+                  <li>Instalasi & Setup: Jupyter Notebook, Anaconda, Python, R, dan alat-alat analisis lainnya</li>
+                  <li>Pemrograman Dasar Python: Variabel, tipe data, control flow, dan fungsi</li>
+                  <li>Pengenalan ke Statistik Dasar: Mean, median, mode, standar deviasi, distribusi probabilitas</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">Minggu 3-4: Pengumpulan dan Pembersihan Data</button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Sumber Data: Mengakses data dari file CSV, Excel, database, dan API</li>
+                  <li>Data Wrangling: Teknik untuk menggabungkan, mengubah, dan menyaring data</li>
+                  <li>Pembersihan Data: Menangani missing values, duplikasi, dan data yang tidak konsisten</li>
+                  <li>Exploratory Data Analysis (EDA): Visualisasi awal untuk memahami pola dan outliers</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">Minggu 5-6: Analisis Data dan Visualisasi</button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Analisis Statistik Lanjut: Korelasi, regresi, dan analisis distribusi</li>
+                  <li>Pandas & Numpy: Library Python untuk analisis data yang lebih mendalam</li>
+                  <li>Matplotlib & Seaborn: Visualisasi data dengan grafik dan diagram interaktif</li>
+                  <li>Dashboarding dengan Tableau/Power BI: Membuat laporan interaktif dan dashboard</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">Minggu 7-8: Machine Learning Dasar</button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Pengenalan ke Machine Learning: Supervised dan unsupervised learning</li>
+                  <li>Algoritma Supervised Learning: Linear regression, logistic regression, decision trees</li>
+                  <li>Evaluasi Model: Cross-validation, confusion matrix, precision, recall, F1-score</li>
+                  <li>Pengantar Unsupervised Learning: Clustering dengan K-Means dan hierarchical clustering</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">Minggu 9-10: Machine Learning Lanjut</button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Algoritma Lanjut: Random forest, gradient boosting, support vector machines (SVM)</li>
+                  <li>Feature Engineering: Teknik memilih dan membuat fitur yang relevan</li>
+                  <li>Hyperparameter Tuning: Optimasi model machine learning</li>
+                  <li>Proyek Mini: Membangun model machine learning dengan dataset nyata</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">Minggu 11-12: Natural Language Processing (NLP) & Big Data</button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Pengantar NLP: Analisis teks, tokenisasi, stemming, dan lemmatization</li>
+                  <li>Sentiment Analysis: Menganalisis sentimen dari teks atau media sosial</li>
+                  <li>Big Data: Pengenalan Hadoop, Spark, dan pengolahan data skala besar</li>
+                  <li>Proyek Mini: Analisis teks atau implementasi big data dalam studi kasus nyata</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">Minggu 13-14: Proyek Akhir & Persiapan Karier</button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Proyek Akhir: Membangun proyek data science dari end-to-end, mulai dari pengumpulan data hingga presentasi hasil</li>
+                  <li>Membuat Portofolio: Menyusun hasil proyek dalam portofolio profesional</li>
+                  <li>Persiapan Karier: Tips membuat CV, interview, dan simulasi interview teknis</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-4" id="mentor-1">
+        <h1>Mentor</h1>
+        <div class="card-mentor">
+          <div class="mentor-img">
+            <img src="../img/user-tie-solid.svg">
+          </div>
+          <div class="mentor-name">
+            <p>Mentor 1</p>
+            <p>Data Science</p>
+          </div>
+        </div>
+      </div>
+      <div class="container-5" id="jadwal-1">
+        <div class="jadwal-title">
+          <h1>Jadwal & Biaya</h1>
+        </div>
+        <div class="table">
+          <table>
+            <tr class="head">
+              <th><p id="left">Pilih Program Yang Kamu Inginkan</p></th>
+              <th><p>Regular</p></th>
+              <th><p>Job Connect</p></th>
+              <th><p>Biaya</p></th>
+            </tr>
+            <tr>
+              <td><p id="left">4 Minggu</p></td>
+              <td><i class="fa-solid fa-check" id="check"></i></td>
+              <td><i class="fa-solid fa-x" id="x"></i></td>
+              <td><p>Rp. 250.000</p></td>
+            </tr>
+            <tr>
+              <td><p id="left">8 Minggu</p></td>
+              <td><i class="fa-solid fa-check" id="check"></i></td>
+              <td><i class="fa-solid fa-x" id="x"></i></td>
+              <td><p>Rp. 400.000</p></td>
+            </tr>
+            <tr>
+              <td><p id="left">12 Minggu</p></td>
+              <td><i class="fa-solid fa-check" id="check"></i></td>
+              <td><i class="fa-solid fa-x" id="x"></i></td>
+              <td><p>Rp. 600.000</p></td>
+            </tr>
+            <tr>
+              <td><p id="left">14 Minggu</p></td>
+              <td><i class="fa-solid fa-check" id="check"></i></td>
+              <td><i class="fa-solid fa-check" id="check"></i></td>
+              <td><p>Rp. 1.000.000</p></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-content">
+      <img src="../img/logo.png">
+      <div class="footer-mid">
+        <ul>
+          <li><a href="../index.html#program-title">Program</a></li>
+          <li><a href="../About/about.html">About Us</a></li>
+          <li><a href="../Contact/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <p>Follow Us on Social Media</p>
+        <div class="social">
+          <a href="https://www.instagram.com/rafi__16/" id="instagram"><i class="fa-brands fa-instagram fa-lg"></i></a>
+          <a href="https://linkedin.com/in/rafijayalaksana" id="linkedin"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+          <a href="https://github.com/CookieeJar16" id="github"><i class="fa-brands fa-github fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="line">
+      <hr>
+    </div>
+    <div class="footer">
+      <p>&copy;2024 Ngoding. All Rights Reserved</p>
+      <p>Term of Service | Privacy Policy</p>
+    </div>
+  </footer>
+  <script src="./data_science.js"></script>
+</body>
+</html>

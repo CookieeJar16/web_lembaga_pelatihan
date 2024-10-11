@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Us - Ngoding</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <img src="../img/logo.png">
+    <nav>
+      <ul class="sidebar">
+        <li onclick="hideSidebar()"><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#383c3f"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+        <li><a href="../index.html"><b>Home</b></a></li>
+        <li><a href="../index.html#program-title"><b>Program</b></a></li>
+        <li><a href="../About/about.html"><b>About Us</b></a></li>
+        <li><a href="../Contact/contact.html"><b>Contact</b></a></li>
+        <li><a href="./Login/login.html"><b>Sign In</b></a></li>
+      </ul>
+      <ul class="navbar">
+        <li><a href="../index.html"><b>Home</b></a></li>
+        <li><a href="../index.html#program-title"><b>Program</b></a></li>
+        <li><a href="../About/about.html"><b>About Us</b></a></li>
+        <li><a href="../Contact/contact.html"><b>Contact</b></a></li>
+      </ul>
+    </nav>
+    <button class="btn" onclick="btnlogin()">Sign In</button>
+    <a class="btn2" onclick="showSidebar()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#383c3f"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
+  </header>
+  <section class="about-section">
+    <div class="container">
+      <h1>About Ngoding</h1>
+        <p>Ngoding adalah platform edukasi teknologi yang berfokus pada pemrograman, teknologi web, dan data science. Kami berkomitmen untuk menyediakan pelatihan yang mudah diakses dan berkualitas bagi semua orang yang ingin memulai atau mengembangkan karier di dunia teknologi.</p>
+          <div class="mission-vision">
+            <div class="mission">
+              <h2>Misi Kami</h2>
+              <p>Misi kami adalah membantu siapa saja, di mana saja, untuk belajar dan mengembangkan keterampilan coding yang relevan dengan industri saat ini, melalui pembelajaran interaktif dan proyek nyata.</p>
+            </div>
+            <div class="vision">
+              <h2>Visi Kami</h2>
+              <p>Visi kami adalah menciptakan komunitas pembelajaran yang inovatif dan inklusif, di mana setiap orang dapat menjadi programmer yang sukses dan berkontribusi dalam membangun masa depan digital.</p>
+            </div>
+          </div>
+          <div class="team">
+            <h2>Meet Our Team</h2>
+            <div class="team-cards">
+              <div class="card">
+                <img src="founder.jpg" alt="Founder Image">
+                <h3>John Doe</h3>
+                <p>Founder & CEO</p>
+              </div>
+              <div class="card">
+                <img src="cofounder.jpg" alt="Co-Founder Image">
+                <h3>Jane Smith</h3>
+                <p>Co-Founder & CTO</p>
+              </div>
+              <div class="card">
+                <img src="mentor.jpg" alt="Mentor Image">
+                <h3>Mark Wilson</h3>
+                <p>Lead Mentor</p>
+              </div>
+            </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-content">
+      <img src="../img/logo.png">
+      <div class="footer-mid">
+        <ul>
+          <li><a href="../index.html#program-title">Program</a></li>
+          <li><a href="../About/about.html">About Us</a></li>
+          <li><a href="../Contact/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <p>Follow Us on Social Media</p>
+        <div class="social">
+          <a href="https://www.instagram.com/rafi__16/" id="instagram"><i class="fa-brands fa-instagram fa-lg"></i></a>
+          <a href="https://linkedin.com/in/rafijayalaksana" id="linkedin"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+          <a href="https://github.com/CookieeJar16" id="github"><i class="fa-brands fa-github fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="line">
+      <hr>
+    </div>
+    <div class="footer">
+      <p>&copy;2024 Ngoding. All Rights Reserved</p>
+      <p>Term of Service | Privacy Policy</p>
+    </div>
+  </footer>
+    <script src="./about.js"></script>
+</body>
+</html>

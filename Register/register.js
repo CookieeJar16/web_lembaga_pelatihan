@@ -1,8 +1,8 @@
 //registration validation
 const registerForm = document.getElementById("registerForm");
-const usernameInput = document.getElementById("username");
-const registerEmailInput = document.getElementById("registerEmail");
-const registerPasswordInput = document.getElementById("registerPassword");
+const usernameInput = document.getElementById("username").value;
+const registerEmailInput = document.getElementById("registerEmail").value;
+const registerPasswordInput = document.getElementById("registerPassword").value;
 const confirmPasswordInput = document.getElementById("confirmPassword");
 
 function isValidEmail(email) {
@@ -35,7 +35,6 @@ if (registerPasswordInput.value.trim() === "") {
   isValid = false;
 }
 
-// Periksa apakah konfirmasi password sama dengan password
 if (confirmPasswordInput.value.trim() !== registerPasswordInput.value.trim()) {
   shakeElement(confirmPasswordInput);
   isValid = false;

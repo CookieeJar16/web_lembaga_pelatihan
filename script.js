@@ -1,105 +1,131 @@
-// img slider
-const carouselRow = document.querySelector('.slide-row');
-const carouselSlide = document.getElementsByClassName('slide');
-const dots = document.getElementsByClassName('dot');
-const nextBtn = document.querySelector('.next');
-const prevBtn = document.querySelector('.prev');
+const slideContainer = document.querySelector('.carousel-slide');
+const slides = document.querySelectorAll('.carousel-slide img, .carousel-slide iframe'); 
+const prevButton = document.querySelector('.prev-btn');
+const nextButton = document.querySelector('.next-btn');
+const dots = document.querySelectorAll('.dot');
 
-let index = 1;
-var width;
+let currentIndex = 0;
+const totalSlides = slides.length;
+let slideInterval; 
 
-function slideWidth(){
-  width = carouselSlide[0].clientWidth;
+slideContainer.style.transform = `translateX(${-currentIndex * 100}%)`;
+
+function updateSlidePosition() {
+    slideContainer.style.transform = `translateX(${-currentIndex * 100}%)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentIndex].classList.add('active');
 }
-slideWidth();
-window.addEventListener('resize', slideWidth);
-carouselRow.style.transform = 'translateX(' + (- width * index) + 'px)';
 
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
 function nextSlide() {
-  if (index >= carouselSlide.length - 1) {return};
-  carouselRow.style.transition = "transform 0.4s ease-in-out";
-  index++;
-  carouselRow.style.transform = 'translateX(' + (- width * index) + 'px)';
-  dotsLabel();
+    if (currentIndex < totalSlides - 1) {
+        currentIndex++;
+    } else {
+        currentIndex = 0;
+    }
+    updateSlidePosition();
 }
+
 function prevSlide() {
-  if (index <= 0) {return};
-  carouselRow.style.transition = "transform 0.4s ease-in-out";
-  index--;
-  carouselRow.style.transform = 'translateX(' + (- width * index) + 'px)';
-  dotsLabel();
+    if (currentIndex > 0) {
+        currentIndex--;
+    } else {
+        currentIndex = totalSlides - 1;
+    }
+    updateSlidePosition();
 }
 
-carouselRow.addEventListener('transitionend', function() {
-  if (carouselSlide[index].id === 'firstImageDuplicate') {
-    carouselRow.style.transition = 'none';
-    index = carouselSlide.length - index;
-carouselRow.style.transform = 'translateX(' + (- width * index) + 'px)';
-dotsLabel();
-  }
-
-  if (carouselSlide[index].id === 'lastImageDuplicate') {
-    carouselRow.style.transition = 'none';
-    index = carouselSlide.length - 2;
-carouselRow.style.transform = 'translateX(' + (- width * index) + 'px)';
-dotsLabel();  
-  }
-});
-
-function autoslide() {
-  deleteInterval = setInterval(timer, 5000);
-  function timer() {
+nextButton.addEventListener('click', () => {
     nextSlide();
-  }
-}
-autoslide();
-
-function dotsLabel(){
-  for(i = 0; i < dots.length; i++){
-    dots[i].className = dots[i].className.replace(' active', '');
-  }
-  dots[index - 1].className += ' active';
-}
-
-const mainContainer = document.querySelector('.slide-container');
-mainContainer.addEventListener('mouseover', function(){
-  clearInterval(deleteInterval);
+    stopAutoSlide(); 
 });
 
-mainContainer.addEventListener('mouseout', autoslide);
+prevButton.addEventListener('click', () => {
+    prevSlide();
+    stopAutoSlide(); 
+});
+
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateSlidePosition();
+        stopAutoSlide(); 
+    });
+});
+
+function startAutoSlide() {
+    slideInterval = setInterval(nextSlide, 3000); 
+}
+
+function stopAutoSlide() {
+    clearInterval(slideInterval); 
+}
+
+function resetAutoSlide() {
+    stopAutoSlide(); 
+    startAutoSlide(); 
+}
+
+document.querySelector('.carousel-container').addEventListener('mouseout', () => {
+    startAutoSlide();
+});
+
+document.querySelector('.carousel-container').addEventListener('mouseover', () => {
+    stopAutoSlide();
+});
+
+dots[currentIndex].classList.add('active');
+startAutoSlide();
 
 function showSidebar() {
-  const sidebar = document.querySelector(".sidebar");
-  sidebar.style.display = 'flex';
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.style.display = 'flex';
 }
 
 function hideSidebar() {
-  const sidebar = document.querySelector(".sidebar");
-  sidebar.style.display = 'none';
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.style.display = 'none';
 }
 
 function btnlogin() {
-  window.location.href = "login.html";
+    window.location.href = "./Login/login.html";
 }
 
-//filter artikel
 const categoryDropdown = document.getElementById('category');
 const articles = document.querySelectorAll('.article');
 
 categoryDropdown.addEventListener('change', () => {
-  const selectedCategory = categoryDropdown.value;
+    const selectedCategory = categoryDropdown.value;
 
-  articles.forEach(article => {
-      if (selectedCategory === 'all') {
-          article.style.display = 'flex';
-      } else {
-          if (article.getAttribute('data-category') === selectedCategory) {
-              article.style.display = 'flex';
-          } else {
-              article.style.display = 'none';
-          }
-      }
-  });
+    articles.forEach(article => {
+        if (selectedCategory === 'all') {
+            article.style.display = 'flex';
+        } else {
+            if (article.getAttribute('data-category') === selectedCategory) {
+                article.style.display = 'flex';
+            } else {
+                article.style.display = 'none';
+            }
+        }
+    });
+});
+
+const daftarDataScience = document.getElementById('program-1');
+const daftarDataEngineer = document.getElementById('program-2');
+const daftarBackend = document.getElementById('program-3');
+const daftarFrontend = document.getElementById('program-4');
+
+daftarDataScience.addEventListener('click', () => {
+  window.location.href = './Program/program_data_science.html';
+});
+
+daftarDataEngineer.addEventListener('click', () => {
+  window.location.href = './Program/program_data_science.html';
+});
+
+daftarBackend.addEventListener('click', () => {     
+  window.location.href = './Program/program_data_science.html';
+});
+
+daftarFrontend.addEventListener('click', () => {
+  window.location.href = './Program/program_data_science.html';
 });
