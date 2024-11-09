@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./adminDash.css">
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Admin Dashboard</h1>
+
+        <!-- User Section -->
+        <section class="list-section" id="user-section">
+            <h2>Users</h2>
+            <button class="add-btn" onclick="addItem('user')">Add User</button>
+            <table id="user-list">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Nomor Handphone</th>
+                        <th>Alamat</th>
+                        <th>Program</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="pagination" id="user-pagination"></div>
+        </section>
+
+        <!-- Trainer Section -->
+        <section class="list-section" id="trainer-section">
+            <h2>Trainers</h2>
+            <button class="add-btn" onclick="addItem('trainer')">Add Trainer</button>
+            <table id="trainer-list">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Nomor Handphone</th>
+                        <th>Alamat</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="pagination" id="trainer-pagination"></div>
+        </section>
+
+        <!-- Training Program Section -->
+        <section class="list-section" id="program-section">
+            <h2>Training Programs</h2>
+            <button class="add-btn" onclick="addItem('program')">Add Program</button>
+            <table id="program-list">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama Program</th>
+                        <th>Deskripsi</th>
+                        <th>Jadwal</th>
+                        <th>Materi</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="pagination" id="program-pagination"></div>
+        </section>
+
+        <!-- Articles Section -->
+        <section class="list-section" id="article-section">
+            <h2>Articles</h2>
+            <button class="add-btn" onclick="addItem('article')">Add Article</button>
+            <table id="article-list">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Judul Berita</th>
+                        <th>Isi Berita</th>
+                        <th>Tanggal Publikasi</th>
+                        <th>Kategori</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="pagination" id="article-pagination"></div>
+        </section>
+    </div>
+  <div class="container-add">
+    <div class="add-container">
+      <div class="profile-container">
+        <div class="title-profile">
+          <h1 class="profile">
+            Add User
+          </h1>
+          <h1 class="trainer">
+            Add Trainer
+          </h1>
+          <h1 class="program">
+            Add Program
+          </h1>
+          <h1 class="article">
+            Add Article
+          </h1>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">
+          Nama
+        </label>
+        <input id="name" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="email">
+          Email
+        </label>
+        <input id="email" type="email"/>
+      </div>
+      <div class="form-group">
+        <label for="contact-number">
+          Nomor Handphone
+        </label>
+        <input id="contact-number" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="address">
+          Alamat
+        </label>
+        <input id="address" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="password">
+          Password
+        </label>
+        <input id="password" type="text"/>
+      </div>
+      <button class="add-btn-1" id="add-btn">
+        Add
+      </button>
+    </div>
+  </div>
+
+    <script src="./adminDash.js"></script>
+</body>
+</html>

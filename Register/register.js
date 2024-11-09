@@ -1,5 +1,4 @@
 const registerForm = document.getElementById("registerForm");
-const usernameInput = document.getElementById("username");
 const registerEmailInput = document.getElementById("registerEmail");
 const registerPasswordInput = document.getElementById("registerPassword");
 const confirmPasswordInput = document.getElementById("confirmPassword");
@@ -17,39 +16,47 @@ function shakeElement(element){
 }
 
 registerForm.addEventListener("submit", function(event) {
-  event.preventDefault();
+  event.preventDefault();  
   let isValid = true;
 
-  if (usernameInput.value.trim() === "") {
-    shakeElement(usernameInput);
-    isValid = false;
-}
-
-  if (registerEmailInput.value.trim() === "" || !isValidEmail(registerEmailInput.value.trim())) {
-    shakeElement(registerEmailInput);
-    isValid = false;
+if (registerEmailInput.value.trim() === "" || !isValidEmail(registerEmailInput.value.trim())) {
+  shakeElement(registerEmailInput);  
+  registerEmailInput.style.border = "1px solid red";  
 }
 
 if (registerPasswordInput.value.trim() === "") {
-  shakeElement(registerPasswordInput);
-  isValid = false;
+  shakeElement(registerPasswordInput); 
 }
 
 if (confirmPasswordInput.value.trim() !== registerPasswordInput.value.trim()) {
   shakeElement(confirmPasswordInput);
-  isValid = false;
 }
+
 if (isValid) {
-  const userData = {
-    username: usernameInput.value.trim(),
-    email: registerEmailInput.value.trim(),
-    password: registerPasswordInput.value.trim(),
-};
-sessionStorage.setItem('account', JSON.stringify(userData));
-sessionStorage.setItem('isLoggedIn', true);
-
-alert('Register berhasil!');
-
-window.location.href = '../Login/login.html';
+  fetch('http://localhost/M1/Backend/controller.php',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      action: 'register',
+      email: registerEmailInput.value,
+      password: registerPasswordInput.value
+    })
+  })
+  .then(response => response.json())
+  .then(data => 
+    {
+      if (data.success) {
+        alert("Registrasi Berhasil");
+        location.href = "../Login/login.html";
+      } else {
+        alert("Registrasi Gagal");
+      }
+    })
+  .catch(error =>
+    console.error('Error:', error)
+  );
 }
 });
+

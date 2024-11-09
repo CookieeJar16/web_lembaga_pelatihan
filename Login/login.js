@@ -32,10 +32,14 @@ const emailError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
 const iconErrorEmail = document.getElementById("iconErrorEmail");
 const iconErrorPassword = document.getElementById("iconErrorPassword");
-const storedAccount = JSON.parse(sessionStorage.getItem('account'));
 
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (email.includes("admin")) {
+    return true;
+  }
+
   return emailRegex.test(email);
 }
 
@@ -60,39 +64,40 @@ form.addEventListener("submit", function(event) {
       emailInput.classList.add("error");
       iconErrorEmail.style.display = "inline";
       shakeElement(emailInput);
-      isValid = false;
+      return;
   }
   if (passwordInput.value.trim() === "") {
       passwordError.style.display = "block";
       passwordInput.classList.add("error");
       iconErrorPassword.style.display = "inline";
       shakeElement(passwordInput);
-      isValid = false;
+      return;
   }
 
   if (isValid) {
-    // Cek apakah akun terdaftar
-    if (storedAccount && 
-        emailInput.value.trim() === storedAccount.email && 
-        passwordInput.value.trim() === storedAccount.password) {
-        
-        alert('Login berhasil!');
-        sessionStorage.setItem('isLoggedIn', true);
+    fetch('http://localhost/M1/Backend/controller.php',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        action: 'login',
+        email: emailInput.value,
+        password: passwordInput.value
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert("Login Berhasil");
         window.location.href = "../index.html";
-    } else {
-        alert('Email atau password salah!');
-        emailError.style.display = "block";
-        emailInput.classList.add("error");
-        iconErrorEmail.style.display = "inline";
-        shakeElement(emailInput);
-        passwordError.style.display = "block";
-        passwordInput.classList.add("error");
-        iconErrorPassword.style.display = "inline";
-        shakeElement(passwordInput);
-        isValid = false;
-    }
-}
-    if (!isValid) {
-        event.preventDefault();
-    }
+      } else {
+        alert("Email atau Password yang anda masukkan salah");
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  } 
 });
+
