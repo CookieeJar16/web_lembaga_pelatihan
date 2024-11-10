@@ -329,16 +329,97 @@ function editArticle(id){
         })
           .then(response => response.json())
           .then(data => {
-            if (data.success){
-              alert("Add article success");
-              location.reload();
+            if (data.error){
+              alert(data.error);
             } else {
-              alert("Add article failed");
-              console.log(data);
+              alert("Edit program success");
+              location.reload();
             }
           })
+          .catch(error => console.error('Error:', error));
       })
   }
+}
+
+//FUNCTION DELETE
+function deleteUser(id) {
+  fetch('http://localhost/M1/Backend/controller.php', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ action: 'deleteUser', id: id })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        alert(data.error);
+      } else {
+        alert("Delete user success");
+        location.reload();
+      }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function deleteTrainer(id) {
+  fetch('http://localhost/M1/Backend/controller.php', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ action: 'deleteTrainer', id: id })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        alert(data.error);
+      } else {
+        alert("Delete trainer success");
+        location.reload();
+      }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function deleteProgram(id) {
+  fetch('http://localhost/M1/Backend/controller.php', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ action: 'deleteProgram', id_program: id })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        alert(data.error);
+      } else {
+        alert("Delete program success");
+        location.reload();
+      }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function deleteArticle(id) {
+  fetch('http://localhost/M1/Backend/controller.php', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ action: 'deleteArticle', id_berita: id })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        alert(data.error);
+      } else {
+        alert("Delete article success");
+        location.reload();
+      }
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 

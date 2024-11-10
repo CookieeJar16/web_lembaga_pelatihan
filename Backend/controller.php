@@ -602,15 +602,17 @@ function editArticle($pdo) {
                 return;
             }
             
-            $updateQuery = "UPDATE berita SET" . implode(", ", $fields) . " WHERE id_berita = ?"; 
+            $updateQuery = "UPDATE berita SET " . implode(", ", $fields) . " WHERE id_berita = ?"; 
             $values[] = $id;
             
-            $stmt = $pdo->prepare($updateQuery);
-            $stmt->execute();
-
-            echo json_encode(['success' => true]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Gagal mengunggah foto']);
+            $updateStmt = $pdo->prepare($updateQuery);
+            $success = $updateStmt->execute($values);
+        
+            if ($success) {
+                echo json_encode(["message" => "Profile updated successfully"]);
+            } else {
+                echo json_encode(["error" => "Failed to update profile"]);
+            }
         }
   }
 }
