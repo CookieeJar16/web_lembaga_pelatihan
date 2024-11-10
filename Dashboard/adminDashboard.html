@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="./adminDash.css">
+    <link rel="stylesheet" href="./adminDash_v0.1.css">
 </head>
 <body>
     <div class="dashboard">
@@ -13,7 +13,7 @@
         <!-- User Section -->
         <section class="list-section" id="user-section">
             <h2>Users</h2>
-            <button class="add-btn" onclick="addItem('user')">Add User</button>
+            <button class="add-btn" id="add-user-btn">Add User</button>
             <table id="user-list">
                 <thead>
                     <tr>
@@ -34,7 +34,7 @@
         <!-- Trainer Section -->
         <section class="list-section" id="trainer-section">
             <h2>Trainers</h2>
-            <button class="add-btn" onclick="addItem('trainer')">Add Trainer</button>
+            <button class="add-btn" id="add-trainer-btn">Add Trainer</button>
             <table id="trainer-list">
                 <thead>
                     <tr>
@@ -54,7 +54,7 @@
         <!-- Training Program Section -->
         <section class="list-section" id="program-section">
             <h2>Training Programs</h2>
-            <button class="add-btn" onclick="addItem('program')">Add Program</button>
+            <button class="add-btn" id="add-program-btn">Add Program</button>
             <table id="program-list">
                 <thead>
                     <tr>
@@ -74,7 +74,7 @@
         <!-- Articles Section -->
         <section class="list-section" id="article-section">
             <h2>Articles</h2>
-            <button class="add-btn" onclick="addItem('article')">Add Article</button>
+            <button class="add-btn" id="add-article-btn">Add Article</button>
             <table id="article-list">
                 <thead>
                     <tr>
@@ -91,21 +91,13 @@
             <div class="pagination" id="article-pagination"></div>
         </section>
     </div>
-  <div class="container-add">
+
+  <div class="container-add" id="container-add">
     <div class="add-container">
       <div class="profile-container">
         <div class="title-profile">
           <h1 class="profile">
             Add User
-          </h1>
-          <h1 class="trainer">
-            Add Trainer
-          </h1>
-          <h1 class="program">
-            Add Program
-          </h1>
-          <h1 class="article">
-            Add Article
           </h1>
         </div>
       </div>
@@ -139,12 +131,303 @@
         </label>
         <input id="password" type="text"/>
       </div>
-      <button class="add-btn-1" id="add-btn">
-        Add
+      <button class="add-btn-1" id="add-btn-1">
+        Add User
       </button>
     </div>
   </div>
 
-    <script src="./adminDash.js"></script>
+  <div class="container-edit" id="container-edit">
+    <div class="add-container">
+      <div class="profile-container">
+        <div class="title-profile">
+          <h1 class="profile">
+            Edit User
+          </h1>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">
+          Nama
+        </label>
+        <input id="edit-name" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="email">
+          Email
+        </label>
+        <input id="edit-email" type="email"/>
+      </div>
+      <div class="form-group">
+        <label for="contact-number">
+          Nomor Handphone
+        </label>
+        <input id="edit-contact-number" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="address">
+          Alamat
+        </label>
+        <input id="edit-address" type="text"/>
+      </div>
+      <button class="add-btn-1" id="edit-btn-1">
+        Edit User
+      </button>
+    </div>
+  </div>
+
+  <div class="container-add-trainer" id="container-add-trainer">
+    <div class="add-container">
+      <div class="profile-container">
+        <div class="title-profile">
+          <h1 class="profile">
+            Add Trainer
+          </h1>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">
+          Nama
+        </label>
+        <input id="name-trainer" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="email">
+          Email
+        </label>
+        <input id="email-trainer" type="email"/>
+      </div>
+      <div class="form-group">
+        <label for="contact-number">
+          Nomor Handphone
+        </label>
+        <input id="contact-number-trainer" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="address">
+          Alamat
+        </label>
+        <input id="address-trainer" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="password">
+          Password
+        </label>
+        <input id="password-trainer" type="text"/>
+      </div>
+      <button class="add-btn-1" id="add-btn-2">
+        Add Trainer
+      </button>
+    </div>
+  </div>
+
+  <div class="container-edit-trainer" id="container-edit-trainer">
+    <div class="add-container">
+      <div class="profile-container">
+        <div class="title-profile">
+          <h1 class="profile">
+            Edit Trainer
+          </h1>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">
+          Nama
+        </label>
+        <input id="edit-name-trainer" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="email">
+          Email
+        </label>
+        <input id="edit-email-trainer" type="email"/>
+      </div>
+      <div class="form-group">
+        <label for="contact-number">
+          Nomor Handphone
+        </label>
+        <input id="edit-contact-number-trainer" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="address">
+          Alamat
+        </label>
+        <input id="edit-address-trainer" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="password">
+          Password
+        </label>
+        <input id="edit-password-trainer" type="text"/>
+      </div>
+      <button class="add-btn-1" id="edit-btn-2">
+        Edit Trainer
+      </button>
+    </div>
+  </div>
+
+  <div class="container-add-program" id="container-add-program">
+    <div class="add-container">
+      <div class="profile-container">
+        <div class="title-profile">
+          <h1 class="profile">
+            Add Program
+          </h1>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="program">
+          Program
+        </label>
+        <input id="program" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="deskripsi">
+          Deskripsi
+        </label>
+        <input id="deskripsi" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="jadwal">
+          Jadwal
+        </label>
+        <input id="jadwal" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="materi">
+          Materi
+        </label>
+        <input id="materi" type="text"/>
+      </div>
+      <button class="add-btn-1" id="add-btn-3">
+        Add Program
+      </button>
+    </div>
+  </div>
+
+  <div class="container-edit-program" id="container-edit-program">
+    <div class="add-container">
+      <div class="profile-container">
+        <div class="title-profile">
+          <h1 class="profile">
+            Edit Program
+          </h1>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="program">
+          Program
+        </label>
+        <input id="edit-program" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="deskripsi">
+          Deskripsi
+        </label>
+        <input id="edit-deskripsi" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="jadwal">
+          Jadwal
+        </label>
+        <input id="edit-jadwal" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="materi">
+          Materi
+        </label>
+        <input id="edit-materi" type="text"/>
+      </div>
+      <button class="add-btn-1" id="edit-btn-3">
+        Edit Program
+      </button>
+    </div>
+  </div>
+
+  <div class="container-add-article" id="container-add-article">
+    <div class="add-container">
+      <div class="profile-container">
+        <div class="title-profile">
+          <h1 class="profile">
+            Add Article
+          </h1>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="judul-berita">
+          Judul
+        </label>
+        <input id="judul-berita" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="isi-berita">
+          Isi Berita
+        </label>
+        <textarea id="isi-berita" name="isi-berita" rows="5" ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="tanggal">
+          Tanggal Publikasi
+        </label>
+        <input id="tanggal" type="date"/>
+      </div>
+      <div class="form-group">
+        <label for="foto">
+          Foto Artikel
+        </label>
+        <input id="foto-berita" type="file" name="foto"/>
+      </div>
+      <div class="form-group">
+        <label for="kategori">
+          Kategori
+        </label>
+        <input id="kategori" type="text"/>
+      </div>
+      <button class="add-btn-1" id="add-btn-4">
+        Add Article
+      </button>
+    </div>
+  </div>
+
+  <div class="container-edit-article" id="container-edit-article">
+    <div class="add-container">
+      <div class="profile-container">
+        <div class="title-profile">
+          <h1 class="profile">
+            Edit Article
+          </h1>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="judul-berita">
+          Judul
+        </label>
+        <input id="edit-judul-berita" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="isi-berita">
+          Isi Berita
+        </label>
+        <textarea id="edit-isi-berita" name="isi-berita" rows="5" ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="tanggal">
+          Tanggal Publikasi
+        </label>
+        <input id="edit-tanggal" type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="kategori">
+          Kategori
+        </label>
+        <input id="edit-kategori" type="text"/>
+      </div>
+      <button class="add-btn-1" id="edit-btn-4">
+        Edit Article
+      </button>
+    </div>
+  </div>
+
+    <script src="./adminDash_v0.3.js"></script>
 </body>
 </html>

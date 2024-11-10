@@ -64,10 +64,12 @@
         inputUserData($pdo, $input);
     } elseif ($action === 'addTrainer') {
         addTrainer($pdo, $input);
-    } elseif ($action === 'addArticle') {
-        addArticle($pdo, $input);
     } elseif ($action === 'addProgram') {
         addProgram($pdo, $input);
+    } elseif ($action === 'addUser') {
+        addUser($pdo, $input);
+    } elseif ($_POST['action'] === 'addArticle') {
+        addArticle($pdo);
     } else {
         echo json_encode(['message' => 'Invalid action']);
     }
@@ -341,10 +343,10 @@ function addTrainer($pdo, $input) {
   if ($existingUser) {
       echo json_encode(['message' => 'Email already exists', 'success' => false]);
   } else {
-    $sql = "INSERT INTO user (nama, alamat, no_telp, email, password, role) VALUES (:email, :password, 3)";
+    $sql = "INSERT INTO user (nama, alamat, no_telp, email, password, role) VALUES (:nama, :alamat, :no_telp, :email, :password, 3)";
     $stmt = $pdo->prepare($sql);
     $passwordHash = password_hash($input['password'], PASSWORD_DEFAULT);
-    $stmt->execute(['email' => $input['email'], 'password' => $passwordHash]);
+    $stmt->execute([ 'nama' => $input['nama'], 'alamat' => $input['alamat'], 'no_telp' => $input['no_telp'], 'email' => $input['email'], 'password' => $passwordHash]);
     echo json_encode(['message' => 'Trainer registered successfully', 'success' => true]);
   }
 }
@@ -353,7 +355,7 @@ function addProgram($pdo, $input) {
   $sql = "INSERT INTO program (nama_program, deskripsi, jadwal, materi) VALUES (:nama_program, :deskripsi, :jadwal, :materi)";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(['nama_program' => $input['nama_program'], 'deskripsi' => $input['deskripsi'], 'jadwal' => $input['jadwal'], 'materi' => $input['materi']]);
-  echo json_encode(['message' => 'Program added successfully']);
+  echo json_encode(['message' => 'Program added successfully', 'success' => true]);
 }
 
 function updateProgram($pdo, $input) {
@@ -370,11 +372,33 @@ function deleteProgram($pdo, $input) {
   echo json_encode(['message' => 'Program deleted successfully']);
 }
 
-function addArticle($pdo, $input) {
-  $sql = "INSERT INTO berita (judul_berita, isi_berita,tanggal_publikasi, id_kategori) VALUES (:judul_berita, :isi_berita, :tanggal_publikasi, :id_kategori)";
-  $stmt = $pdo->prepare($sql);
-  $stmt->execute(['judul_berita' => $input['judul_berita'], 'isi_berita' => $input['isi_berita'], 'tanggal_publikasi' => $input['tanggal_publikasi'], 'id_kategori' => $input['id_kategori']]);
-  echo json_encode(['message' => 'Article added successfully']);
+function addArticle($pdo) {
+  $uploadDir = __DIR__ . '/../uploadedImg/article/';
+    if (isset($_FILES['foto_berita'])) {
+        $fotoName = basename($_FILES['foto_berita']['name']);
+        $uploadFile = $uploadDir . $fotoName;
+
+        if (move_uploaded_file($_FILES['foto_berita']['tmp_name'], $uploadFile)) {
+            
+            $fotoPath = '/M1/uploadedImg/article/' . $fotoName;
+            
+            $sql = "INSERT INTO berita (judul_berita, isi_berita, tanggal_publikasi, id_kategori, foto_berita) 
+                    VALUES (:judul_berita, :isi_berita, :tanggal_publikasi, :id_kategori, :foto_berita)";
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                ':judul_berita' => $_POST['judul_berita'],
+                ':isi_berita' => $_POST['isi_berita'],
+                ':tanggal_publikasi' => $_POST['tanggal_publikasi'],
+                ':id_kategori' => $_POST['id_kategori'],
+                ':foto_berita' => $fotoPath
+            ]);
+
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Gagal mengunggah foto']);
+        }
+  }
 }
 
 function updateArticle($pdo, $input) {
@@ -389,6 +413,23 @@ function deleteArticle($pdo, $input) {
   $stmt = $pdo->prepare($sql);
   $stmt->execute(['id_berita' => $input['id_berita']]);
   echo json_encode(['message' => 'Article deleted successfully']);
+}
+
+function addUser($pdo, $input) {
+  $checkSql = "SELECT * FROM user WHERE email = :email";
+  $checkStmt = $pdo->prepare($checkSql);
+  $checkStmt->execute(['email' => $input['email']]);
+  $existingUser = $checkStmt->fetch(PDO::FETCH_ASSOC);
+
+  if ($existingUser) {
+      echo json_encode(['message' => 'Email already exists', 'success' => false]);
+  } else {
+    $sql = "INSERT INTO user (nama, alamat, no_telp, email, password, role) VALUES (:nama, :alamat, :no_telp, :email, :password, 2)";
+    $stmt = $pdo->prepare($sql);
+    $passwordHash = password_hash($input['password'], PASSWORD_DEFAULT);
+    $stmt->execute([ 'nama' => $input['nama'], 'alamat' => $input['alamat'], 'no_telp' => $input['no_telp'], 'email' => $input['email'], 'password' => $passwordHash]);
+    echo json_encode(['message' => 'User added successfully', 'success' => true]);
+  }
 }
 
 ?>
